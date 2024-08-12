@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Scarlet Location Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0; 
+        }
+
+        h1 {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #212121;
+            color: #f0f0f0;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 900px; /* Wider container */
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 10px; /* More rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* More pronounced shadow */
+        }
+
+        select {
+            width: 100%;
+            padding: 15px; /* Increased padding */
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px; /* More bubble-like corners */
+            background-color: #2b2b2b;
+            color: #f0f0f0;
+            font-size: 18px;
+            appearance: none; /* Customize dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E"); /* Down arrow icon */
+            background-repeat: no-repeat;
+            background-position: right 10px center; 
+            background-size: 16px 12px;
+            padding-right: 30px; 
+        }
+
+        .pokemon-info {
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #212121;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add transition effects */
+        }
+
+        .pokemon-info:hover {
+            transform: translateY(-5px); /* Lift up on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Larger shadow on hover */
+        }
+
+        .pokemon-info h2 {
+            margin-top: 0;
+            color: #f0f0f0;
+            font-size: 24px; /* Larger heading */
+        }
+
+        .pokemon-info p {
+            margin-bottom: 8px;
+            line-height: 1.6; /* Improved readability */
+            font-size: 16px; /* Larger text */
+        }
+
+        .pokemon-info strong {
+            font-weight: bold;
+            color: #eee; 
+        }
+
+        .type-grass { color: #9ccc65; }
+        .type-dark { color: #75574c; }
+        .type-psychic { color: #ea4c89; }
+        .type-fairy { color: #d685a8; }
+        .type-electric { color: #f7d02c; }
+        .type-steel { color: #b7b7ce; }
+        .type-poison { color: #ba68c8; }
+        .type-fire { color: #f08030; }
+        .type-ground { color: #e2bf65; } 
+    </style>
+</head>
+<body>
+
+    <h1>Pokémon Scarlet Location Guide</h1>
+
+    <div class="container">
+        <select id="pokemonSelect">
+            <option value="">Select a Pokémon</option>
+            <option value="Sprigatito">Sprigatito</option>
+            <option value="Ralts">Ralts</option>
+            <option value="Eevee">Eevee</option>
+            <option value="Magnemite">Magnemite</option>
+            <option value="Salandit">Salandit</option>
+            <option value="Sandile">Sandile</option>
+        </select>
+
+        <div id="pokemonInfo" style="display: none;"> </div>
+    </div>
+
+    <script>
+        
+        const pokemonData = {
+            "Sprigatito": {
+                "type": "Grass / <span class='type-dark'>Dark</span>",
+                "location": "Starter Pokémon - Not found in the wild",
+                "wildEncounters": "N/A",
+                "evolution": "Sprigatito evolves into Floragato at Level 16. Floragato evolves into Meowscarada at Level 36."
+            },
+            "Ralts": {
+                "type": "<span class='type-psychic'>Psychic</span> / <span class='type-fairy'>Fairy</span>",
+                "location": "South Province (Area One), South Province (Area Two)",
+                "wildEncounters": "Ralts: Level 5-12, Kirlia: Level 15-18 (rare)",
+                "evolution": "Ralts evolves into Kirlia at Level 20. Kirlia evolves into Gardevoir at Level 30."
+            },
+            "Eevee": {
+                "type": "<span class='type-dark'>Dark</span> (Umbreon)",
+                "location": "South Province (Area Three), West Province (Area Three)",
+                "wildEncounters": "Eevee: Level 10-15",
+                "evolution": "Eevee evolves into Umbreon through high friendship, then leveling up at night. Aim for evolution before Level 25-30."
+            },
+            "Magnemite": {
+                "type": "<span class='type-electric'>Electric</span> / <span class='type-steel'>Steel</span>",
+                "location": "Around Levincia, West Province (Area Two)",
+                "wildEncounters": "Magnemite: Level 15-18, Magneton: Level 40+ (Area Zero, late-game)",
+                "evolution": "Magnemite evolves into Magneton at Level 30. Magneton evolves into Magnezone when exposed to a Thunder Stone."
+            },
+            "Salandit": {
+                "type": "<span class='type-poison'>Poison</span> / <span class='type-fire'>Fire</span>",
+                "location": "Asado Desert, East Province (Area Three), Alfornada Cavern",
+                "wildEncounters": "Salandit: Level 20-25",
+                "evolution": "Salandit evolves into Salazzle at Level 33, but only if it is female."
+            },
+            "Sandile": {
+                "type": "<span class='type-ground'>Ground</span> / <span class='type-dark'>Dark</span>",
+                "location": "Asado Desert, East Province (Area Three)",
+                "wildEncounters": "Sandile: Level 20-25, Krokorok: Level 30-35 (rare)",
+                "evolution": "Sandile evolves into Krokorok at Level 29. Krokorok evolves into Krookodile at Level 40."
+            }
+        };
+
+        const pokemonSelect = document.getElementById("pokemonSelect");
+        const pokemonInfoDiv = document.getElementById("pokemonInfo");
+
+        pokemonSelect.addEventListener("change", function() {
+            const selectedPokemon = pokemonSelect.value;
+
+            if (selectedPokemon) {
+                const pokemon = pokemonData[selectedPokemon];
+                const infoHTML = `
+                    <div class="pokemon-info">
+                        <h2>${selectedPokemon}</h2>
+                        <p><strong>Type:</strong> ${pokemon.type}</p>
+                        <p><strong>Location:</strong> ${pokemon.location}</p>
+                        <p><strong>Wild Encounters:</strong> ${pokemon.wildEncounters}</p>
+                        <p><strong>Evolution:</strong> ${pokemon.evolution}</p>
+                    </div>
+                `;
+                pokemonInfoDiv.innerHTML = infoHTML;
+                pokemonInfoDiv.style.display = "block"; 
+            } else {
+                pokemonInfoDiv.style.display = "none"; 
+            }
+        });
+    </script>
+
+</body>
+</html>
